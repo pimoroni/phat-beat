@@ -1,0 +1,11 @@
+CHANGELOG.txt
+LICENSE.txt
+MANIFEST.in
+README.txt
+setup.py
+phatbeat/__init__.py
+phatbeat.egg-info/PKG-INFO
+phatbeat.egg-info/SOURCES.txt
+phatbeat.egg-info/dependency_links.txt
+phatbeat.egg-info/requires.txt
+phatbeat.egg-info/top_level.txt

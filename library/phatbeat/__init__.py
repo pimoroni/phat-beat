@@ -34,7 +34,15 @@ def _exit():
     GPIO.cleanup()
 
 def on(buttons, handler=None, repeat=True):
-    """Attach a handler function to one or more buttons."""
+    """Attach a handler function to one or more buttons.
+
+    Can be used as a decorator, or optionally supplied a handler param.
+
+    :param buttons: Individual button pin or list of pins to watch
+    :param handler: Optional handler function
+    ;param repeat: Whether the handler should be repeated if the button is held
+
+    """
 
     buttons = buttons if isinstance(buttons, list) else [buttons]
 
@@ -125,7 +133,7 @@ def _handle_button(pin):
             delay = max(0.01, delay)
 
 def show():
-    """Output the buffer to Blinkt!"""
+    """Output the buffer to the displays"""
 
     _sof()
 
@@ -147,6 +155,7 @@ def set_all(r, g, b, brightness=None, channel=None):
     :param g: Amount of green: 0 to 255
     :param b: Amount of blue: 0 to 255
     :param brightness: Brightness: 0.0 to 1.0 (default around 0.2)
+    :param channel: Optionally specify which bar to set: 0 or 1
 
     """
 
@@ -168,7 +177,7 @@ def set_pixel(x, r, g, b, brightness=None, channel=None):
     :param g: Amount of green: 0 to 255
     :param b: Amount of blue: 0 to 255
     :param brightness: Brightness: 0.0 to 1.0 (default around 0.2)
-    :param channel: Optional channel 0 or 1
+    :param channel: Optionally specify which bar to set: 0 or 1
 
     """
 
@@ -187,11 +196,11 @@ def set_pixel(x, r, g, b, brightness=None, channel=None):
 
 
 def set_clear_on_exit(value=True):
-    """Set whether Blinkt! should be cleared upon exit
+    """Set whether the displays should be cleared upon exit
 
-    By default Blinkt! will turn off the pixels on exit, but calling::
+    By default the displays will turn off on exit, but calling::
 
-        blinkt.set_clear_on_exit(False)
+        phatbeat.set_clear_on_exit(False)
 
     Will ensure that it does not.
 

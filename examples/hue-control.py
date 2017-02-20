@@ -1,7 +1,24 @@
+#!/usr/bin/env python
+
 import colorsys
 import time
 
 import phatbeat
+
+print("""
+pHAT BEAT: Hue Control
+
+Press the top (On/Off) button to turn the LEDs on/off.
+
+Press Fast-Forward or Play/Pause to change the left bar colour.
+
+Press Volume Up/Down to change the right bar colour.
+
+Press Rewind to reset the bar colours.
+
+Press Ctrl+C to exit!
+
+""")
 
 hue_l = 0
 hue_r = 0

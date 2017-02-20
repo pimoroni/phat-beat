@@ -20,6 +20,20 @@ At A Glance
 .. automoduleoutline:: phatbeat
    :members:
 
+Handle A Button Press
+---------------------
+
+To handle a button press, you should use the :python:`on` method as a decorator, like so::
+
+    @phatbeat.on(phatbeat.BTN_FASTFWD)
+    def fastfwd(pin):
+        print("Fast Forward Pressed")
+
+
+.. automodule:: phatbeat
+   :noindex:
+   :members: on
+
 Set A Single Pixel
 ------------------
 
@@ -48,7 +62,7 @@ To set just one channel or the other, specify channel 0 or 1.
 Show
 ----
 
-None of your pixels will appear on Blinkt! until you :python:`show()` them. This method writes
+None of your pixels will appear until you :python:`show()` them. This method writes
 all the pixel data out to your device.
 
 .. automodule:: phatbeat
@@ -60,7 +74,7 @@ Clear
 
 Exactly the same as calling :python:`set_all(0,0,0)`, clear sets all the pixels to black.
 
-You must also call :python:`show()` if you want to turn Blinkt! off.
+You must also call :python:`show()` if you want to turn the displays off.
 
 .. automodule:: phatbeat
    :noindex:
@@ -69,17 +83,23 @@ You must also call :python:`show()` if you want to turn Blinkt! off.
 Enable/Disable Clear On Exit
 ----------------------------
 
-Sometimes you want a script that runs and quits, leaving a pattern up on Blinkt!
+Sometimes you want a script that runs and quits, leaving a pattern up on the displays.
 
 
 .. automodule:: phatbeat
    :noindex:
-   :members: set_clear_on_exit
+   :members: set_clear_on_exiti
 
 Constants
 ---------
 
-Blinkt! has 8 pixels. Simple. Use the constant :python:`NUM_PIXELS` when you're iterating over pixels,
-so you can avoid a *magic number* in your code.
+The following constants denote available buttons for pHAT BEAT.
 
-:python:`NUM_PIXELS = 8`
+* :python:`BTN_FASTFWD = 5`
+* :python:`BTN_REWIND = 13`
+* :python:`BTN_PLAYPAUSE = 6`
+* :python:`BTN_VOLUP = 16`
+* :python:`BTN_VOLDN = 26`
+* :python:`BTN_ONOFF = 12`
+* :python:`BUTTONS` list of all available buttons
+

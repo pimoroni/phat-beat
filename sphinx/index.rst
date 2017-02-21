@@ -88,7 +88,7 @@ Sometimes you want a script that runs and quits, leaving a pattern up on the dis
 
 .. automodule:: phatbeat
    :noindex:
-   :members: set_clear_on_exiti
+   :members: set_clear_on_exit
 
 Constants
 ---------

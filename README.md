@@ -1,4 +1,4 @@
-#PHAT BEAT DAC
+#PHAT BEAT
 
 Stereo amplifier, buttons and dual RGB VU meter for your Pi.
 
@@ -8,7 +8,7 @@ https://shop.pimoroni.com/products/phat-beat
 
 **Full install ( recommended ):**
 
-We've created a super-easy installation script that will install all pre-requisites and get your Scroll pHAT HD
+We've created a super-easy installation script that will install all pre-requisites and get your pHAT BEAT
 up and running in a jiffy. To run it fire up Terminal which you'll find in Menu -> Accessories -> Terminal
 on your Raspberry Pi desktop like so:
 

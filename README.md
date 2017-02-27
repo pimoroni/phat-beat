@@ -1,4 +1,4 @@
-#PHAT BEAT
+![pHAT BEAT](phat-beat-logo.png)
 
 Stereo amplifier, buttons and dual RGB VU meter for your Pi.
 

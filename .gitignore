@@ -16,3 +16,4 @@ __pycache__
 packaging/*tar.xz
 library/debian/
 library/blinkt
+sphinx.virtualenv

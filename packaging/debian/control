@@ -12,7 +12,7 @@ Package: python-phatbeat
 Architecture: all
 Section: python
 Depends: ${misc:Depends}, ${python:Depends}, python-smbus
-Suggests: i2c-tools, python-psutil
+Suggests: i2c-tools
 Description: python library designed to control PHAT BEAT.
  PHAT BEAT provides a stereo amplifier, VU meter and five buttons.
  .
@@ -22,7 +22,7 @@ Package: python3-phatbeat
 Architecture: all
 Section: python
 Depends: ${misc:Depends}, ${python3:Depends}, python3-smbus
-Suggests: i2c-tools, python3-psutil
+Suggests: i2c-tools
 Description: python library designed to control PHAT BEAT.
  PHAT BEAT provides a stereo amplifier, VU meter and five buttons.
  .

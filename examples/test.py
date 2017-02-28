@@ -1,5 +1,9 @@
-import phatbeat
+#!/usr/bin/env python
+
 import time
+
+import phatbeat
+
 
 @phatbeat.on(phatbeat.BTN_ONOFF)
 def fast_forward(pin):

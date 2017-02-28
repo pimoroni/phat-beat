@@ -1,7 +1,11 @@
 import atexit
 import time
+from sys import exit
 
-import RPi.GPIO as GPIO
+try:
+    import RPi.GPIO as GPIO
+except ImportError:
+    exit("This library requires the RPi.GPIO module\nInstall with: sudo pip install RPi.GPIO")
 
 
 __version__ = '0.0.1'
@@ -220,4 +224,3 @@ GPIO.setup(BUTTONS, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 for button in BUTTONS:
     GPIO.add_event_detect(button, GPIO.FALLING, callback=_handle_button, bouncetime=200)
-

@@ -5,6 +5,7 @@ import time
 
 import phatbeat
 
+
 print("""
 pHAT BEAT: Hue Control
 

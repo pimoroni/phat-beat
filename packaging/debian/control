@@ -11,8 +11,8 @@ X-Python3-Version: >= 3.4
 Package: python-phatbeat
 Architecture: all
 Section: python
-Depends: ${misc:Depends}, ${python:Depends}, python-smbus
-Suggests: i2c-tools
+Depends: ${misc:Depends}, ${python:Depends}, python-rpi.gpio
+Suggests: pulseaudio
 Description: python library designed to control PHAT BEAT.
  PHAT BEAT provides a stereo amplifier, VU meter and five buttons.
  .
@@ -21,8 +21,8 @@ Description: python library designed to control PHAT BEAT.
 Package: python3-phatbeat
 Architecture: all
 Section: python
-Depends: ${misc:Depends}, ${python3:Depends}, python3-smbus
-Suggests: i2c-tools
+Depends: ${misc:Depends}, ${python3:Depends}, python3-rpi.gpio
+Suggests: pulseaudio
 Description: python library designed to control PHAT BEAT.
  PHAT BEAT provides a stereo amplifier, VU meter and five buttons.
  .

@@ -24,31 +24,15 @@ If you choose to download examples you'll find them in `/home/pi/Pimoroni/phatbe
 
 **Library install for Python 3:**
 
-on Raspbian:
-
-```bash
-sudo apt-get install python3-phatbeat
-```
-other environments: 
-
 ```bash
 sudo pip3 install phatbeat
 ```
 
 **Library install for Python 2:**
 
-on Raspbian:
-
-```bash
-sudo apt-get install python-phatbeat
-```
-other environments: 
-
 ```bash
 sudo pip2 install phatbeat
 ```
-
-In all cases you will have to enable the i2c bus.
 
 ##Documentation & Support
 

@@ -1,24 +1,22 @@
 #! /bin/sh
 ### BEGIN INIT INFO
-# Provides:          phatbeatd
+# Provides:          vlcd
 # Required-Start:    $remote_fs $syslog
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Starts PHAT BEAT VLC control daemon at boot time
-# Description:       Manages the PHAT BEAT VLC control daemon
+# Short-Description: Starts VLC daemon at boot time
+# Description:       Manages the VLC daemon
 ### END INIT INFO
 
 # Do NOT "set -e"
 
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
-DESC="Picade HAT Daemon"
-NAME=phatbeatd
+DESC="VLC Daemon"
+NAME=vlcd
 DAEMON=/usr/bin/$NAME
-PIDFILE=/var/run/$NAME.pid
-LOGFILE=/var/log/$NAME.log
-ERRFILE=/var/log/$NAME.err
+PIDFILE=/var/run/$NAME/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
 
 # Exit if the package is not installed
@@ -45,7 +43,7 @@ do_start()
 		return 1
 	fi
 	echo 'Starting...' >&2
-	su -c "$DAEMON" root
+	su -c "$DAEMON" pi
 }
 
 #

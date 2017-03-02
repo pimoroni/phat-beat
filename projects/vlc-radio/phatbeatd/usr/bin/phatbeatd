@@ -10,7 +10,8 @@ import signal
 import sys
 from datetime import datetime
 
-import phatbeat
+VLC_HOST = "127.0.0.1"
+VLC_PORT = 9294
 
 LOG_LEVEL = 0
 
@@ -115,7 +116,12 @@ if __name__ == "__main__":
 
     def _cleanup():
         log("Exiting cleanly")
-        os.remove(PIDFILE)
+
+        try:
+            os.remove(PIDFILE)
+        except OSError:
+            pass
+
         if stdin is not None: stdin.close()
         if stdout is not None: stdout.close()
         if stderr is not None: stderr.close()
@@ -158,9 +164,11 @@ if __name__ == "__main__":
     os.dup2(stdout.fileno(), sys.stdout.fileno())
     os.dup2(stderr.fileno(), sys.stderr.fileno())
 
-    vlc = VLC()
+    vlc = VLC(host=VLC_HOST, port=VLC_PORT)
 
     if vlc.connect():
+        import phatbeat
+
         @phatbeat.on(phatbeat.BTN_VOLDN)
         def pb_volume_down(pin):
             log(vlc.communicate("voldown"))

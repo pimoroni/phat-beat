@@ -28,6 +28,7 @@ BUTTONS = [BTN_REWIND, BTN_FASTFWD, BTN_PLAYPAUSE, BTN_VOLUP, BTN_VOLDN, BTN_ONO
 pixels = [[0,0,0,BRIGHTNESS]] * NUM_PIXELS
 
 _button_repeat = {}
+_button_hold = {}
 _button_handlers = {}
 _clear_on_exit = True
 
@@ -37,7 +38,7 @@ def _exit():
         show()
     GPIO.cleanup()
 
-def on(buttons, handler=None, repeat=True):
+def on(buttons, handler=None, repeat=True, hold=0):
     """Attach a handler function to one or more buttons.
 
     Can be used as a decorator, or optionally supplied a handler param.
@@ -52,6 +53,7 @@ def on(buttons, handler=None, repeat=True):
 
     for button in buttons:
         _button_repeat[button] = repeat
+        _button_hold[button] = hold
 
     if handler is not None:
         for button in buttons:
@@ -117,6 +119,21 @@ def _sof():
 
 def _handle_button(pin):
     if pin in _button_handlers.keys() and callable(_button_handlers[pin]):
+
+        if _button_hold[pin] > 0:
+            t = _button_hold[pin]
+
+            while t > 0:
+                if t > 0.01:
+                    time.sleep(0.01)
+                    t -= 0.01
+                else:
+                    time.sleep(t)
+                    t = 0
+
+                if GPIO.input(pin):
+                    return
+
         _button_handlers[pin](pin)
 
         if not _button_repeat[pin]:

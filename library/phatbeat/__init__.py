@@ -195,6 +195,9 @@ def set_pixel(x, r, g, b, brightness=None, channel=None):
             raise ValueError("Index should be < {} when displaying on a specific channel".format(CHANNEL_PIXELS))
 
         x += channel * (CHANNEL_PIXELS)
+        
+    if x >= CHANNEL_PIXELS:
+		x = NUM_PIXELS - 1 - (x - CHANNEL_PIXELS)
 
     pixels[x] = [int(r) & 0xff,int(g) & 0xff,int(b) & 0xff,brightness]
 

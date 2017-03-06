@@ -5,7 +5,7 @@ import time
 import phatbeat
 
 
-@phatbeat.on(phatbeat.BTN_ONOFF)
+@phatbeat.on(phatbeat.BTN_FASTFWD)
 def fast_forward(pin):
     print("FF pressed!")
 

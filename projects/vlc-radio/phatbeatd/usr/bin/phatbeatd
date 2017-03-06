@@ -42,8 +42,13 @@ class VLC():
         self.port = port
         self.current_stream = None
         self.current_state = None
+        self.connecting = False
+        self.socket = None
 
     def send(self, command):
+        if self.connecting:
+            return False
+
         log("Sending command: {}".format(command), level=LOG_INFO)
         command_string = command + "\n"
 
@@ -54,7 +59,9 @@ class VLC():
             self.socket.send(command_string)
 
         except socket.error:
-            log("Failed to send command to VLC", level=LOG_WARN)
+            log("Failed to send command to VLC", level=LOG_WARN) 
+            if self.connect():
+                self.send(command)
 
     def recv(self, length):
         value = self.socket.recv(8192)
@@ -86,6 +93,14 @@ class VLC():
         return self.current_stream
 
     def connect(self):
+        if self.connecting:
+            return
+
+        self.connecting = True
+
+        if self.socket is not None:
+            self.socket.close()
+
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         for attempt in range(10):
@@ -93,12 +108,14 @@ class VLC():
                 log("Attempting to connect to VLC on {host}:{port}".format(host=self.host, port=self.port))
                 self.socket.connect((self.host, self.port))
                 log("Connection successful!", level=LOG_INFO)
+                self.connecting = False
                 return True
 
             except socket.error:
                 time.sleep(1)
 
         log("Connection failed!", level=LOG_FAIL)
+        self.connecting = False
         return False
 
 

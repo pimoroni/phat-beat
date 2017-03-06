@@ -45,7 +45,7 @@ def on(buttons, handler=None, repeat=True, hold=0):
 
     :param buttons: Individual button pin or list of pins to watch
     :param handler: Optional handler function
-    ;param repeat: Whether the handler should be repeated if the button is held
+    :param repeat: Whether the handler should be repeated if the button is held
 
     """
 

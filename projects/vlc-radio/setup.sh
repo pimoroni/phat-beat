@@ -336,7 +336,7 @@ sudo systemctl enable vlcd
 sudo service vlcd start
 
 echo "Copying default playlist to /etc/vlcd/"
-mkdir /etc/vlcd &> /dev/null
+sudo mkdir /etc/vlcd &> /dev/null
 sudo cp ./vlcd/etc/vlcd/default.m3u /etc/vlcd/
 sleep 1
 

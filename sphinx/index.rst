@@ -10,8 +10,8 @@ Welcome
 
 This documentation will guide you through the methods available in the pHAT BEAT python library.
 
-* More information - https://shop.pimoroni.com/products/phatbeat
-* Get the code - https://github.com/pimoroni/phatbeat
+* More information - https://shop.pimoroni.com/products/phat-beat
+* Get the code - https://github.com/pimoroni/phat-beat
 * Get help - http://forums.pimoroni.com/c/support
 
 At A Glance

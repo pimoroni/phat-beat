@@ -23,4 +23,4 @@ sudo chown pi:pi /var/run/vlcd
 --no-quiet \
 --daemon \
 --pidfile /var/run/vlcd/vlcd.pid \
-/etc/vlcd/default.pls
+/etc/vlcd/default.m3u

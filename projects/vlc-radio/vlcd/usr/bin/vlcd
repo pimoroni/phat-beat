@@ -2,10 +2,21 @@
 sudo mkdir -p /var/run/vlcd
 sudo chown pi:pi /var/run/vlcd
 /usr/bin/vlc \
+--audio-filter compressor,volnorm \
+--norm-buff-size 10 \
+--norm-max-level 80.0 \
+--compressor-attack 50.0 \
+--compressor-release 200.0 \
+--compressor-ratio 20.0 \
+--compressor-threshold 0.0 \
+--compressor-rms-peak 0.0 \
+--compressor-knee 1.0 \
+--compressor-makeup-gain 12.0 \
+--norm-max-level -3 \
 --intf dummy \
 --extraintf rc --rc-host 0.0.0.0:9294 --rc-fake-tty \
 --extraintf http --http-host 0.0.0.0:8080 --http-password vlcremote \
 --daemon \
 --quiet \
 --pidfile /var/run/vlcd/vlcd.pid \
-/etc/vlcd/default.m3u > /dev/null 2>&1 &
+/etc/vlcd/default.pls > /dev/null 2>&1 &

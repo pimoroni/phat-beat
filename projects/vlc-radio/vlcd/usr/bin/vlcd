@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
-sudo mkdir /var/run/vlcd
+sudo mkdir -p /var/run/vlcd
 sudo chown pi:pi /var/run/vlcd
-/usr/bin/vlc --daemon --pidfile /var/run/vlcd/vlcd.pid --quiet --intf dummy --rc-fake-tty --rc-host 0.0.0.0:9294 --extraintf rc,http --http-password vlcremote /etc/vlcd/default.m3u > /dev/null 2>&1 &
+/usr/bin/vlc \
+--intf dummy \
+--extraintf rc --rc-host 0.0.0.0:9294 --rc-fake-tty \
+--extraintf http --http-host 0.0.0.0:8080 --http-password vlcremote \
+--daemon \
+--quiet \
+--pidfile /var/run/vlcd/vlcd.pid \
+/etc/vlcd/default.m3u > /dev/null 2>&1 &

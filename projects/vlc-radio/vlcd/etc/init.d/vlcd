@@ -58,6 +58,7 @@ do_stop()
 	echo 'Stopping...' >&2
 	kill $(cat "$PIDFILE")
 	echo 'Service stopped!' >&2
+	return 0
 }
 
 case "$1" in

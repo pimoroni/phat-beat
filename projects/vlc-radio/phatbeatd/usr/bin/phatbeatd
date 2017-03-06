@@ -185,6 +185,11 @@ if __name__ == "__main__":
 
     if vlc.connect():
         import phatbeat
+        phatbeat.set_all(0,128,0,0.1)
+        phatbeat.show()
+        time.sleep(1)
+        phatbeat.clear()
+        phatbeat.show()
 
         @phatbeat.on(phatbeat.BTN_VOLDN)
         def pb_volume_down(pin):
@@ -205,6 +210,9 @@ if __name__ == "__main__":
         @phatbeat.on(phatbeat.BTN_REWIND)
         def pb_rewind(pin):
             log(vlc.communicate("prev"))
+        @phatbeat.on(phatbeat.BTN_ONOFF)
+        def perform_shutdown(pin):
+            os.system("sudo shutdown -h now")
 
         signal.signal(signal.SIGINT, _signal_handler)
         signal.signal(signal.SIGTERM, _signal_handler)

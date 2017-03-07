@@ -309,7 +309,7 @@ echo "copied from the internet. Ensure they are from a"
 echo "trusted source."
 newline
 
-echo "Installing dependencies..."
+echo -e "Installing dependencies..."
 
 for pkgdep in ${pkgdeplist[@]}; do
     if apt_pkg_req "$pkgdep"; then
@@ -317,7 +317,7 @@ for pkgdep in ${pkgdeplist[@]}; do
     fi
 done
 
-echo "Installing daemon..."
+echo -e "\nInstalling daemon..."
 
 sudo cp ./phatbeatd/etc/init.d/phatbeatd /etc/init.d/
 sudo cp ./phatbeatd/usr/bin/phatbeatd /usr/bin/
@@ -331,7 +331,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable vlcd
 sudo systemctl enable phatbeatd
 
-echo "Copying default playlist to /etc/vlcd/"
+echo -e "\nCopying default playlist to /etc/vlcd/"
 sudo mkdir /etc/vlcd &> /dev/null
 sudo cp ./vlcd/etc/vlcd/default.m3u /etc/vlcd/
 sleep 1

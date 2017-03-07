@@ -28,7 +28,7 @@ debugmode="no" # whether the script should use debug routines
 debuguser="none" # optional test git user to use in debug mode
 debugpoint="none" # optional git repo branch or tag to checkout
 forcesudo="no" # whether the script requires to be ran with root privileges
-promptreboot="no" # whether the script should always prompt user to reboot
+promptreboot="yes" # whether the script should always prompt user to reboot
 mininstall="no" # whether the script enforces minimum install routine
 customcmd="yes" # whether to execute commands specified before exit
 armhfonly="yes" # whether the script is allowed to run on other arch
@@ -323,17 +323,13 @@ sudo cp ./phatbeatd/etc/init.d/phatbeatd /etc/init.d/
 sudo cp ./phatbeatd/usr/bin/phatbeatd /usr/bin/
 sudo chmod +x /usr/bin/phatbeatd
 
-sudo systemctl daemon-reload
-sudo systemctl enable phatbeatd
-sudo service phatbeatd start
-
 sudo cp ./vlcd/etc/init.d/vlcd /etc/init.d/
 sudo cp ./vlcd/usr/bin/vlcd /usr/bin/
 sudo chmod +x /usr/bin/vlcd
 
 sudo systemctl daemon-reload
 sudo systemctl enable vlcd
-sudo service vlcd start
+sudo systemctl enable phatbeatd
 
 echo "Copying default playlist to /etc/vlcd/"
 sudo mkdir /etc/vlcd &> /dev/null

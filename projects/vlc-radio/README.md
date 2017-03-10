@@ -1,0 +1,31 @@
+##VLC Radio Project
+
+This project rolls a VLC radio onto your Pi, complete with controls via the buttons on pHAT BEAT.
+
+**Installing:**
+
+The recommended way to install this project is using our one-line-installer, as this will ensure the pHAT BEAT is properly set up for playback:
+
+```bash
+curl https://get.pimoroni.com/vlcradio | bash
+```
+
+Alternatively, if you are sure you have a working setup and just want to refresh this project to get all the latest improvements, you can run:
+
+```bash
+setup.sh
+```
+
+**Using:**
+
+After install you should be asked to reboot. If not, reboot :)
+
+When the VLC Radio is ready to rock, the VU should flash once briefly. Press FF or REV to start playback.
+
+You can also access the VLC via http on port 8080 if you'd like to add streams or control playback and volume if you are not right next to the radio.
+
+**PLaylist:**
+
+A default playlist is supplied with the project, but you can (and probably will want to) tune in your favorite stations, of course.
+
+You can either create a `playlist.m3u` and drop it in your home folder (in `/home/pi/.config/vlc/`, or if you don;t like like logging in via ssh you may also drop the `playlist.m3u` in the `/boot` partition of your SD and the vlc daemon will copy it in place for your convenience.

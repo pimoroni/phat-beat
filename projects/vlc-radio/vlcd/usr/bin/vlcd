@@ -1,6 +1,21 @@
 #!/usr/bin/env bash
+
 sudo mkdir -p /var/run/vlcd
-sudo chown pi:pi /var/run/vlcd
+
+if [ -n $(cat /etc/passwd | grep -w "pi:") ]; then
+    sudo chown pi:pi /var/run/vlcd
+    if [ -f /boot/playlist.m3u ]; then
+        mkdir -p /home/pi/.config/vlc
+        sudo mv -f /boot/playlist.m3u /home/pi/.config/vlc/
+        sudo chmod -R pi:pi /home/pi/.config/vlc/
+        playlist="/home/pi/.config/vlc/playlist.m3u"
+    else
+        playlist="/etc/vlcd/default.m3u"
+    fi
+else
+    playlist="/etc/vlcd/default.m3u"
+fi
+
 /usr/bin/vlc \
 --verbose 1 \
 --file-logging \
@@ -24,4 +39,5 @@ sudo chown pi:pi /var/run/vlcd
 --no-quiet \
 --daemon \
 --pidfile /var/run/vlcd/vlcd.pid \
-/etc/vlcd/default.m3u
+$playlist
+

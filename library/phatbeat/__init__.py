@@ -1,5 +1,6 @@
 import atexit
 import time
+from threading import Thread
 from sys import exit
 
 try:
@@ -27,9 +28,15 @@ BUTTONS = [BTN_REWIND, BTN_FASTFWD, BTN_PLAYPAUSE, BTN_VOLUP, BTN_VOLDN, BTN_ONO
 
 pixels = [[0,0,0,BRIGHTNESS]] * NUM_PIXELS
 
-_button_repeat = {}
-_button_hold = {}
 _button_handlers = {}
+_button_repeat = {}
+
+_button_hold_time = {}
+_button_hold_handlers = {}
+_button_hold_repeat = {}
+
+_use_threading = False
+
 _clear_on_exit = True
 
 def _exit():
@@ -38,7 +45,40 @@ def _exit():
         show()
     GPIO.cleanup()
 
-def on(buttons, handler=None, repeat=True, hold=0):
+def use_threading(value=True):
+    global _use_threading
+    _use_threading = value
+
+def hold(buttons, handler=None, repeat=True, hold_time=2):
+    """Attach a handler function to holding or more buttons.
+
+    Can be used as a decorator, or optionally supplied a handler param.
+
+    :param buttons: Individual button pin or list of pins to watch
+    :param handler: Optional handler function
+    :param repeat: Whether the handler should be repeated if the button is held
+    :param hold_time: How long (in seconds) the button should be held before triggering
+
+    """
+
+    buttons = buttons if isinstance(buttons, list) else [buttons]
+
+    for button in buttons:
+        _button_hold_repeat[button] = repeat
+        _button_hold_time[button] = hold_time
+
+    if handler is not None:
+        for button in buttons:
+            _button_hold_handlers[button] = handler
+
+    else:
+        def attach_handler(handler):
+            for button in buttons:
+                _button_hold_handlers[button] = handler
+
+        return attach_handler 
+
+def on(buttons, handler=None, repeat=True):
     """Attach a handler function to one or more buttons.
 
     Can be used as a decorator, or optionally supplied a handler param.
@@ -53,7 +93,6 @@ def on(buttons, handler=None, repeat=True, hold=0):
 
     for button in buttons:
         _button_repeat[button] = repeat
-        _button_hold[button] = hold
 
     if handler is not None:
         for button in buttons:
@@ -64,8 +103,7 @@ def on(buttons, handler=None, repeat=True, hold=0):
             for button in buttons:
                 _button_handlers[button] = handler
 
-        return attach_handler
-    
+        return attach_handler 
 
 def set_brightness(brightness, channel = None):
     """Set the brightness of all pixels
@@ -118,22 +156,30 @@ def _sof():
         GPIO.output(CLK, 0)
 
 def _handle_button(pin):
-    if pin in _button_handlers.keys() and callable(_button_handlers[pin]):
+    if _use_threading:
+        Thread(target=_do_handle_button, args=(pin,)).start()
+    else:
+        _do_handle_button(pin)
 
-        if _button_hold[pin] > 0:
-            t = _button_hold[pin]
+def _handle_hold(pin):
+    if pin in _button_hold_handlers.keys() and callable(_button_hold_handlers[pin]):
+        if _button_hold_time[pin] > 0:
+            t_hold = _button_hold_time[pin]
+            t_end = time.time() + t_hold
 
-            while t > 0:
-                if t > 0.01:
-                    time.sleep(0.01)
-                    t -= 0.01
-                else:
-                    time.sleep(t)
-                    t = 0
-
+            while time.time() < t_end:
                 if GPIO.input(pin):
-                    return
+                    return False
+                time.sleep(0.001)
 
+            _button_hold_handlers[pin](pin)
+            return True
+
+def _do_handle_button(pin):
+    if _handle_hold(pin):
+        return
+
+    if pin in _button_handlers.keys() and callable(_button_handlers[pin]):
         _button_handlers[pin](pin)
 
         if not _button_repeat[pin]:
@@ -142,10 +188,13 @@ def _handle_button(pin):
         delay = 0.25
         ramp_rate = 0.90
 
-        for x in range(50):
-            time.sleep(0.01)
+        t_delay = 0.5
+        t_end = time.time() + t_delay
+
+        while time.time() < t_end:
             if GPIO.input(pin):
                 return
+            time.sleep(0.001)
 
         while not GPIO.input(pin):
             _button_handlers[pin](pin)

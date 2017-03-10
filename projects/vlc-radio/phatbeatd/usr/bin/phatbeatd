@@ -213,6 +213,7 @@ if __name__ == "__main__":
 
         @phatbeat.on(phatbeat.BTN_ONOFF)
         def perform_shutdown(pin):
+            log(vlc.communicate("pause"))
             os.system("sudo shutdown -h now")
 
         signal.signal(signal.SIGINT, _signal_handler)

@@ -22,9 +22,9 @@ After install you should be asked to reboot. If not, reboot :)
 
 When the VLC Radio is ready to rock, the VU should flash once briefly. Press FF or REV to start playback.
 
-You can also access the VLC via http on port 8080 if you'd like to add streams or control playback and volume if you are not right next to the radio.
+You can also access the VLC server via http on port 8080 if you'd like to add streams or control playback and volume if you are not right next to the radio (leave username blank and use password `raspberry`).
 
-**PLaylist:**
+**Playlist:**
 
 A default playlist is supplied with the project, but you can (and probably will want to) tune in your favorite stations, of course.
 

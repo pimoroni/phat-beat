@@ -202,6 +202,9 @@ if __name__ == "__main__":
         @phatbeat.on(phatbeat.BTN_PLAYPAUSE)
         def pb_play_pause(pin):
             log(vlc.communicate("pause"))
+            time.sleep(0.1)
+            phatbeat.clear()
+            phatbeat.show()
 
         @phatbeat.on(phatbeat.BTN_FASTFWD)
         def pb_fast_forward(pin):

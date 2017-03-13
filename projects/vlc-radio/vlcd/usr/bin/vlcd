@@ -18,11 +18,17 @@ else
     playlist="/etc/vlcd/default.m3u"
 fi
 
+volpref=$(grep "^alsa-gain" ~/.config/vlc/vlcrc)
+
+if [ -z $volpref ]; then
+    volpref="alsa-gain 0.065"
+fi
+
 /usr/bin/vlc \
 --verbose 1 \
 --file-logging \
 --logfile /var/run/vlcd/vlcd.log \
---alsa-gain 0.125 \
+--$volpref \
 --audio-filter compressor,volnorm \
 --norm-buff-size 10 \
 --norm-max-level 80.0 \

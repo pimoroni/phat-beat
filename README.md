@@ -68,8 +68,8 @@ sudo python3 setup.py install
 
 ## Documentation & Support
 
-* Getting Started - https://learn.pimoroni.com/phat-beat
 * Buy product - https://shop.pimoroni.com/products/phat-beat
+* Getting Started - https://learn.pimoroni.com/phat-beat
 * Function reference - http://docs.pimoroni.com/phatbeat/
 * GPIO Pinout - https://pinout.xyz/pinout/phat_beat
 * Get help - http://forums.pimoroni.com/c/support

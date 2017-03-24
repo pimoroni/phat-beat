@@ -6,7 +6,7 @@ https://shop.pimoroni.com/products/phat-beat
 
 ## Installing
 
-**Full install ( recommended ):**
+### Full install ( recommended ):
 
 We've created a super-easy installation script that will install all pre-requisites and get your pHAT BEAT
 up and running in a jiffy. To run it fire up Terminal which you'll find in Menu -> Accessories -> Terminal
@@ -22,13 +22,35 @@ curl https://get.pimoroni.com/phatbeat | bash
 
 If you choose to download examples you'll find them in `/home/pi/Pimoroni/phatbeat/`.
 
-**Library install for Python 3:**
+Alternatively, on Raspbian, download the `pimoroni-dashboard` and install your product by browsing to the relevant entry:
+
+```bash
+sudo apt-get install pimoroni
+```
+
+### Manual install:
+
+#### Library install for Python 3:
+
+on Raspbian:
+
+```bash
+sudo apt-get install python3-phatbeat
+```
+other environments: 
 
 ```bash
 sudo pip3 install phatbeat
 ```
 
-**Library install for Python 2:**
+#### Library install for Python 2:
+
+on Raspbian:
+
+```bash
+sudo apt-get install python-phatbeat
+```
+other environments: 
 
 ```bash
 sudo pip2 install phatbeat

@@ -64,6 +64,7 @@ sudo python3 setup.py install
 ```
 (or `sudo python setup.py install` whichever your primary Python environment may be)
 
+
 ## Documentation & Support
 
 * Getting Started - https://learn.pimoroni.com/phat-beat

@@ -12,7 +12,7 @@ We've created a super-easy installation script that will install all pre-requisi
 up and running in a jiffy. To run it fire up Terminal which you'll find in Menu -> Accessories -> Terminal
 on your Raspberry Pi desktop like so:
 
-![Finding the terminal](terminal.jpg)
+![Finding the terminal](http://get.pimoroni.com/resources/github-repo-terminal.png)
 
 In the new terminal window type the following and follow the instructions:
 

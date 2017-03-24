@@ -1,4 +1,4 @@
-##VLC Radio Project
+## VLC Radio Project
 
 This project rolls a VLC radio onto your Pi, complete with controls via the buttons on pHAT BEAT.
 

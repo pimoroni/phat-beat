@@ -6,9 +6,9 @@ Stereo amplifier, buttons and dual RGB VU meter for your Pi.
 
 ### Full install (recommended):
 
-We've created a super-easy installation script that will install all pre-requisites and get your pHAT BEAT
-up and running in a jiffy. To run it fire up Terminal which you'll find in Menu -> Accessories -> Terminal
-on your Raspberry Pi desktop like so:
+We've created an easy installation script that will install all pre-requisites and get your pHAT BEAT
+up and running with minimal efforts. To run it, fire up Terminal which you'll find in Menu -> Accessories -> Terminal
+on your Raspberry Pi desktop, as illustrated below:
 
 ![Finding the terminal](http://get.pimoroni.com/resources/github-repo-terminal.png)
 
@@ -20,12 +20,12 @@ curl https://get.pimoroni.com/phatbeat | bash
 
 If you choose to download examples you'll find them in `/home/pi/Pimoroni/phatbeat/`.
 
-Alternatively, on Raspbian, download the `pimoroni-dashboard` and install your product by browsing to the relevant entry:
+Alternatively, on Raspbian, you can download the `pimoroni-dashboard` and install your product by browsing to the relevant entry:
 
 ```bash
 sudo apt-get install pimoroni
 ```
-(you will find it under 'Accessories' in the Pi menu - or just run `pimoroni-dashboard` at the command line)
+(you will find the Dashboard under 'Accessories' as well, in the Pi menu - or just run `pimoroni-dashboard` at the command line)
 
 ### Manual install:
 

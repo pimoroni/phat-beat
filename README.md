@@ -27,6 +27,7 @@ Alternatively, on Raspbian, download the `pimoroni-dashboard` and install your p
 ```bash
 sudo apt-get install pimoroni
 ```
+(you will find it under 'Accessories' in the Pi menu - or just run `pimoroni-dashboard` at the command line)
 
 ### Manual install:
 
@@ -56,11 +57,17 @@ other environments:
 sudo pip2 install phatbeat
 ```
 
+### Development:
+
+If you want to contribute, or like living on the edge of your seat by having the latest code, you should clone this repository, `cd` to the library directory, and run:
+
+```bash
+sudo python setup.pu install
+```
+
 ## Documentation & Support
 
 * Buy product - https://shop.pimoroni.com/products/phat-beat
-* Getting started - https://learn.pimoroni.com/tutorial/sandyj/soldering-phats
 * Function reference - http://docs.pimoroni.com/phatbeat/
 * GPIO Pinout - https://pinout.xyz/pinout/phat_beat
 * Get help - http://forums.pimoroni.com/c/support
-

@@ -25,7 +25,7 @@ Alternatively, on Raspbian, you can download the `pimoroni-dashboard` and instal
 ```bash
 sudo apt-get install pimoroni
 ```
-(you will find the Dashboard under 'Accessories' as well, in the Pi menu - or just run `pimoroni-dashboard` at the command line)
+(you will find the Dashboard under 'Accessories' too, in the Pi menu - or just run `pimoroni-dashboard` at the command line)
 
 ### Manual install:
 
@@ -65,6 +65,7 @@ sudo python setup.py install
 
 ## Documentation & Support
 
+* Getting Started - https://learn.pimoroni.com/phat-beat
 * Buy product - https://shop.pimoroni.com/products/phat-beat
 * Function reference - http://docs.pimoroni.com/phatbeat/
 * GPIO Pinout - https://pinout.xyz/pinout/phat_beat

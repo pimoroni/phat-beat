@@ -12,7 +12,7 @@ on your Raspberry Pi desktop, as illustrated below:
 
 ![Finding the terminal](http://get.pimoroni.com/resources/github-repo-terminal.png)
 
-In the new terminal window type the following and follow the instructions:
+In the new terminal window type the command exactly as it appears below (check for typos) and follow the on-screen instructions:
 
 ```bash
 curl https://get.pimoroni.com/phatbeat | bash

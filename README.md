@@ -62,7 +62,7 @@ sudo pip2 install phatbeat
 If you want to contribute, or like living on the edge of your seat by having the latest code, you should clone this repository, `cd` to the library directory, and run:
 
 ```bash
-sudo python setup.pu install
+sudo python setup.py install
 ```
 
 ## Documentation & Support

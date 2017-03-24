@@ -4,7 +4,7 @@ Stereo amplifier, buttons and dual RGB VU meter for your Pi.
 
 https://shop.pimoroni.com/products/phat-beat
 
-##Installing
+## Installing
 
 **Full install ( recommended ):**
 
@@ -34,8 +34,9 @@ sudo pip3 install phatbeat
 sudo pip2 install phatbeat
 ```
 
-##Documentation & Support
+## Documentation & Support
 
+* Buy product - https://shop.pimoroni.com/products/phat-beat
 * Getting started - https://learn.pimoroni.com/tutorial/sandyj/soldering-phats
 * Function reference - http://docs.pimoroni.com/phatbeat/
 * GPIO Pinout - https://pinout.xyz/pinout/phat_beat

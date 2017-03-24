@@ -18,14 +18,14 @@ In the new terminal window type the command exactly as it appears below (check f
 curl https://get.pimoroni.com/phatbeat | bash
 ```
 
-If you choose to download examples you'll find them in `/home/pi/Pimoroni/phatbeat/`.
-
 Alternatively, on Raspbian, you can download the `pimoroni-dashboard` and install your product by browsing to the relevant entry:
 
 ```bash
 sudo apt-get install pimoroni
 ```
 (you will find the Dashboard under 'Accessories' too, in the Pi menu - or just run `pimoroni-dashboard` at the command line)
+
+If you choose to download examples you'll find them in `/home/pi/Pimoroni/phatbeat/`.
 
 ### Manual install:
 

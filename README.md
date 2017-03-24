@@ -17,7 +17,7 @@ on your Raspberry Pi desktop like so:
 In the new terminal window type the following and follow the instructions:
 
 ```bash
-curl -sS https://get.pimoroni.com/phatbeat | bash
+curl https://get.pimoroni.com/phatbeat | bash
 ```
 
 If you choose to download examples you'll find them in `/home/pi/Pimoroni/phatbeat/`.

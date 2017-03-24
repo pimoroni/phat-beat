@@ -36,6 +36,7 @@ on Raspbian:
 ```bash
 sudo apt-get install python3-phatbeat
 ```
+
 other environments: 
 
 ```bash
@@ -49,6 +50,7 @@ on Raspbian:
 ```bash
 sudo apt-get install python-phatbeat
 ```
+
 other environments: 
 
 ```bash
@@ -63,7 +65,6 @@ If you want to contribute, or like living on the edge of your seat by having the
 sudo python3 setup.py install
 ```
 (or `sudo python setup.py install` whichever your primary Python environment may be)
-
 
 ## Documentation & Support
 

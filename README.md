@@ -2,8 +2,6 @@
 
 Stereo amplifier, buttons and dual RGB VU meter for your Pi.
 
-https://shop.pimoroni.com/products/phat-beat
-
 ## Installing
 
 ### Full install ( recommended ):

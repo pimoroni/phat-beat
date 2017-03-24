@@ -4,7 +4,7 @@ Stereo amplifier, buttons and dual RGB VU meter for your Pi.
 
 ## Installing
 
-### Full install ( recommended ):
+### Full install (recommended):
 
 We've created a super-easy installation script that will install all pre-requisites and get your pHAT BEAT
 up and running in a jiffy. To run it fire up Terminal which you'll find in Menu -> Accessories -> Terminal

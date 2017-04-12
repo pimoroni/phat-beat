@@ -1,3 +1,10 @@
+0.0.2
+-----
+
+* Bugfix: Corrected (reversed) order of pixels in second bar
+* New: Optional threading for button handlers
+* New: Added hold() to attach a handler to a button hold event
+
 0.0.1
 -----
 

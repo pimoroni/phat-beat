@@ -13,7 +13,7 @@ Architecture: all
 Section: python
 Depends: ${misc:Depends}, ${python:Depends}, python-rpi.gpio
 Suggests: pulseaudio
-Description: python library designed to control PHAT BEAT.
+Description: Python library for the Pimoroni pHAT BEAT.
  PHAT BEAT provides a stereo amplifier, VU meter and five buttons.
  .
  This is the Python 2 version of the package.
@@ -23,7 +23,7 @@ Architecture: all
 Section: python
 Depends: ${misc:Depends}, ${python3:Depends}, python3-rpi.gpio
 Suggests: pulseaudio
-Description: python library designed to control PHAT BEAT.
+Description: Python library for the Pimoroni pHAT BEAT.
  PHAT BEAT provides a stereo amplifier, VU meter and five buttons.
  .
  This is the Python 3 version of the package.

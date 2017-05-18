@@ -2,6 +2,8 @@
 
 This project rolls a VLC radio onto your Pi, complete with controls via the buttons on pHAT BEAT.
 
+[Check out the full tutorial on our learning portal!](https://learn.pimoroni.com/tutorial/sandyj/internet-radio-on-your-pirate-radio)
+
 **Installing:**
 
 The recommended way to install this project is using our one-line-installer, as this will ensure the pHAT BEAT is properly set up for playback:

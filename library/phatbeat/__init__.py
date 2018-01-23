@@ -48,7 +48,7 @@ def _exit():
 
 def use_threading(value=True):
     global _use_threading
-    ensure_setup()
+    setup()
     _use_threading = value
 
 def hold(buttons, handler=None, repeat=True, hold_time=2):
@@ -63,7 +63,7 @@ def hold(buttons, handler=None, repeat=True, hold_time=2):
 
     """
 
-    ensure_setup()
+    setup()
 
     buttons = buttons if isinstance(buttons, list) else [buttons]
 
@@ -93,7 +93,7 @@ def on(buttons, handler=None, repeat=True):
 
     """
 
-    ensure_setup()
+    setup()
 
     buttons = buttons if isinstance(buttons, list) else [buttons]
 
@@ -118,7 +118,7 @@ def set_brightness(brightness, channel = None):
 
     """
 
-    ensure_setup()
+    setup()
 
     if brightness < 0 or brightness > 1:
         raise ValueError("Brightness should be between 0.0 and 1.0")
@@ -134,7 +134,7 @@ def set_brightness(brightness, channel = None):
 def clear(channel = None):
     """Clear the pixel buffer"""
 
-    ensure_setup()
+    setup()
 
     if channel is None or channel == 0:
         for x in range(CHANNEL_PIXELS):
@@ -215,7 +215,7 @@ def _do_handle_button(pin):
 def show():
     """Output the buffer to the displays"""
 
-    ensure_setup()
+    setup()
 
     _sof()
 
@@ -241,7 +241,7 @@ def set_all(r, g, b, brightness=None, channel=None):
 
     """
 
-    ensure_setup()
+    setup()
 
     if channel is None or channel == 0:
         for x in range(CHANNEL_PIXELS):
@@ -265,7 +265,7 @@ def set_pixel(x, r, g, b, brightness=None, channel=None):
 
     """
 
-    ensure_setup()
+    setup()
 
     if brightness is None:
         brightness = pixels[x][3]
@@ -298,19 +298,14 @@ def set_clear_on_exit(value=True):
     """
 
     global _clear_on_exit
-    ensure_setup()
+    setup()
     _clear_on_exit = value
 
-def ensure_setup():
-    return setup()
 
 def setup():
-    global _is_setup, ensure_setup
+    global _is_setup
 
     if _is_setup:
-        raise RuntimeError("Setup has already run,\nplease call phatbeat.setup() before any other method.")
-
-    def ensure_setup():
         return True
 
     atexit.register(_exit)

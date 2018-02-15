@@ -1,3 +1,9 @@
+0.1.0
+-----
+
+* Bugfix: Deferred initialisation to prevent import side-effects
+* Bugfix: Implemented EOF for newer APA102 part
+
 0.0.2
 -----
 

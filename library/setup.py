@@ -39,7 +39,7 @@ classifiers = ['Development Status :: 5 - Production/Stable',
 
 setup(
     name            = 'phatbeat',
-    version         = '0.0.2',
+    version         = '0.1.0',
     author          = 'Philip Howard',
     author_email    = 'phil@pimoroni.com',
     description     = """Python library for driving Pimoroni pHAT BEAT!""",

@@ -1,3 +1,10 @@
+phatbeat (0.1.0) stable; urgency=low
+
+  * Bugfix: Deferred initialisation to prevent import side-effects
+  * Bugfix: Implemented EOF for newer APA102 part
+
+ -- Phil Howard <phil@pimoroni.com>  Thu, 15 Feb 2017 00:00:00 +0000
+
 phatbeat (0.0.2) stable; urgency=low
 
   * Bugfix: Corrected (reversed) order of pixels in second bar

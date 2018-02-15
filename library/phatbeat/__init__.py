@@ -144,8 +144,8 @@ def _write_byte(byte):
 # Emit exactly enough clock pulses to latch the small dark die APA102s which are weird
 # for some reason it takes 36 clocks, the other IC takes just 4 (number of pixels/2)
 def _eof():
-    GPIO.output(DAT, 0)
-    for x in range(36):
+    GPIO.output(DAT, 1)
+    for x in range(32):
         GPIO.output(CLK, 1)
         GPIO.output(CLK, 0)
 

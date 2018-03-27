@@ -1,4 +1,12 @@
-## VLC Radio Project
+## Easy VLC Radio
+
+The easy VLC Radio set up is a small pre-built image with all the things needed to make your pHAT BEAT-powered Pirate Radio work out of the box.
+
+It's not designed to be highly interactive or customisable, but is great if you want to get a simple radio up and running quickly.
+
+It's still in beta testing, but it works well in many cases. Read more about it, and find the latest download link here: https://forums.pimoroni.com/t/piratepython-pirate-radio/7058
+
+## Raspbian VLC Radio
 
 This project rolls a VLC radio onto your Pi, complete with controls via the buttons on pHAT BEAT.
 

@@ -9,7 +9,7 @@ except ImportError:
     raise ImportError("This library requires the RPi.GPIO module\nInstall with: sudo pip install RPi.GPIO")
 
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 DAT = 23
 CLK = 24

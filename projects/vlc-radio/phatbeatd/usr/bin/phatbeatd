@@ -219,6 +219,12 @@ if __name__ == "__main__":
             log(vlc.communicate("pause"))
             os.system("sudo shutdown -h now")
 
+        @phatbeat.hold(phatbeat.BTN_ONOFF)
+        def delay_shutdown(pin):
+            time.sleep(1200)
+            log(vlc.communicate("pause"))
+            os.system("sudo shutdown -h now")
+
         signal.signal(signal.SIGINT, _signal_handler)
         signal.signal(signal.SIGTERM, _signal_handler)
         signal.pause()

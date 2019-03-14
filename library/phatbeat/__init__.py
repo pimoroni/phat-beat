@@ -1,7 +1,6 @@
 import atexit
 import time
 from threading import Thread
-from sys import exit
 
 try:
     import RPi.GPIO as GPIO
@@ -26,7 +25,7 @@ BTN_ONOFF = 12
 
 BUTTONS = [BTN_REWIND, BTN_FASTFWD, BTN_PLAYPAUSE, BTN_VOLUP, BTN_VOLDN, BTN_ONOFF]
 
-pixels = [[0,0,0,BRIGHTNESS]] * NUM_PIXELS
+pixels = [[0, 0, 0, BRIGHTNESS]] * NUM_PIXELS
 
 _button_handlers = {}
 _button_repeat = {}
@@ -40,16 +39,19 @@ _use_threading = False
 _is_setup = False
 _clear_on_exit = True
 
+
 def _exit():
     if _clear_on_exit:
         clear()
         show()
     GPIO.cleanup()
 
+
 def use_threading(value=True):
     global _use_threading
     setup()
     _use_threading = value
+
 
 def hold(buttons, handler=None, repeat=True, hold_time=2):
     """Attach a handler function to holding or more buttons.
@@ -62,7 +64,6 @@ def hold(buttons, handler=None, repeat=True, hold_time=2):
     :param hold_time: How long (in seconds) the button should be held before triggering
 
     """
-
     setup()
 
     buttons = buttons if isinstance(buttons, list) else [buttons]
@@ -80,7 +81,8 @@ def hold(buttons, handler=None, repeat=True, hold_time=2):
             for button in buttons:
                 _button_hold_handlers[button] = handler
 
-        return attach_handler 
+        return attach_handler
+
 
 def on(buttons, handler=None, repeat=True):
     """Attach a handler function to one or more buttons.
@@ -92,7 +94,6 @@ def on(buttons, handler=None, repeat=True):
     :param repeat: Whether the handler should be repeated if the button is held
 
     """
-
     setup()
 
     buttons = buttons if isinstance(buttons, list) else [buttons]
@@ -109,15 +110,15 @@ def on(buttons, handler=None, repeat=True):
             for button in buttons:
                 _button_handlers[button] = handler
 
-        return attach_handler 
+        return attach_handler
 
-def set_brightness(brightness, channel = None):
+
+def set_brightness(brightness, channel=None):
     """Set the brightness of all pixels
 
     :param brightness: Brightness: 0.0 to 1.0
 
     """
-
     setup()
 
     if brightness < 0 or brightness > 1:
@@ -131,18 +132,19 @@ def set_brightness(brightness, channel = None):
         for x in range(CHANNEL_PIXELS):
             pixels[x + (CHANNEL_PIXELS)][3] = int(31.0 * brightness) & 0b11111
 
-def clear(channel = None):
-    """Clear the pixel buffer"""
 
+def clear(channel=None):
+    """Clear the pixel buffer"""
     setup()
 
     if channel is None or channel == 0:
         for x in range(CHANNEL_PIXELS):
-            pixels[x][0:3] = [0,0,0]
+            pixels[x][0:3] = [0, 0, 0]
 
     if channel is None or channel == 1:
         for x in range(CHANNEL_PIXELS):
-            pixels[x + (CHANNEL_PIXELS)][0:3] = [0,0,0]
+            pixels[x + (CHANNEL_PIXELS)][0:3] = [0, 0, 0]
+
 
 def _write_byte(byte):
     for x in range(8):
@@ -152,6 +154,7 @@ def _write_byte(byte):
         byte <<= 1
         GPIO.output(CLK, 0)
         time.sleep(0.0000005)
+
 
 # Emit exactly enough clock pulses to latch the small dark die APA102s which are weird
 # for some reason it takes 36 clocks, the other IC takes just 4 (number of pixels/2)
@@ -163,19 +166,22 @@ def _eof():
         GPIO.output(CLK, 0)
         time.sleep(0.0000005)
 
+
 def _sof():
-    GPIO.output(DAT,0)
+    GPIO.output(DAT, 0)
     for x in range(32):
         GPIO.output(CLK, 1)
         time.sleep(0.0000005)
         GPIO.output(CLK, 0)
         time.sleep(0.0000005)
 
+
 def _handle_button(pin):
     if _use_threading:
         Thread(target=_do_handle_button, args=(pin,)).start()
     else:
         _do_handle_button(pin)
+
 
 def _handle_hold(pin):
     if pin in _button_hold_handlers.keys() and callable(_button_hold_handlers[pin]):
@@ -190,6 +196,7 @@ def _handle_hold(pin):
 
             _button_hold_handlers[pin](pin)
             return True
+
 
 def _do_handle_button(pin):
     if _handle_hold(pin):
@@ -218,6 +225,7 @@ def _do_handle_button(pin):
             delay *= ramp_rate
             delay = max(0.01, delay)
 
+
 def show():
     """Output the buffer to the displays"""
 
@@ -233,6 +241,7 @@ def show():
         _write_byte(r)
 
     _eof()
+
 
 def set_all(r, g, b, brightness=None, channel=None):
     """Set the RGB value and optionally brightness of all pixels
@@ -257,9 +266,10 @@ def set_all(r, g, b, brightness=None, channel=None):
         for x in range(CHANNEL_PIXELS):
             set_pixel(x + (CHANNEL_PIXELS), r, g, b, brightness)
 
+
 def set_pixel(x, r, g, b, brightness=None, channel=None):
     """Set the RGB value, and optionally brightness, of a single pixel
-    
+
     If you don't supply a brightness value, the last value will be kept.
 
     :param x: The horizontal position of the pixel: 0 to 7
@@ -283,11 +293,11 @@ def set_pixel(x, r, g, b, brightness=None, channel=None):
             raise ValueError("Index should be < {} when displaying on a specific channel".format(CHANNEL_PIXELS))
 
         x += channel * (CHANNEL_PIXELS)
-        
+
     if x >= CHANNEL_PIXELS:
         x = NUM_PIXELS - 1 - (x - CHANNEL_PIXELS)
 
-    pixels[x] = [int(r) & 0xff,int(g) & 0xff,int(b) & 0xff,brightness]
+    pixels[x] = [int(r) & 0xff, int(g) & 0xff, int(b) & 0xff, brightness]
 
 
 def set_clear_on_exit(value=True):
@@ -318,11 +328,10 @@ def setup():
 
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
-    GPIO.setup([DAT,CLK],GPIO.OUT)
+    GPIO.setup([DAT, CLK], GPIO.OUT)
     GPIO.setup(BUTTONS, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
     for button in BUTTONS:
         GPIO.add_event_detect(button, GPIO.FALLING, callback=_handle_button, bouncetime=200)
 
     _is_setup = True
-

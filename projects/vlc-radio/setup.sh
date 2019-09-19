@@ -40,6 +40,7 @@ osreleases=( "Raspbian" ) # list os-releases supported
 oswarning=() # list experimental os-releases
 osdeny=( "Darwin" "Debian" "Kali" "Kano" "Mate" "PiTop" "RetroPie" "Ubuntu" "Volumio" ) # list os-releases specifically disallowed
 pkgdeplist=( "vlc-nox" ) # list of dependencies
+pkgdeplist_buster=( "vlc-bin" "vlc-plugin-base" ) # vlc-nox not in buster
 
 FORCE=$1
 ASK_TO_REBOOT=false
@@ -199,6 +200,9 @@ raspbian_check() {
     if [ -f /etc/os-release ]; then
         if cat /etc/os-release | grep -q "/sid"; then
             IS_SUPPORTED=false && IS_EXPERIMENTAL=true
+        elif cat /etc/os-release | grep -q "buster"; then
+            IS_SUPPORTED=true && IS_EXPERIMENTAL=false
+	    pkgdeplist=${pkgdeplist_buster[@]}
         elif cat /etc/os-release | grep -q "stretch"; then
             IS_SUPPORTED=false && IS_EXPERIMENTAL=true
         elif cat /etc/os-release | grep -q "jessie"; then

@@ -7,7 +7,7 @@ if [ -n $(cat /etc/passwd | grep -w "pi:") ]; then
     if [ -f /boot/playlist.m3u ]; then
         mkdir -p /home/pi/.config/vlc
         sudo mv -f /boot/playlist.m3u /home/pi/.config/vlc/
-        sudo chmod -R pi:pi /home/pi/.config/vlc/
+        sudo chown -R pi:pi /home/pi/.config/vlc/
     fi
     if [ -f /home/pi/.config/vlc/playlist.m3u ]; then
         playlist="/home/pi/.config/vlc/playlist.m3u"

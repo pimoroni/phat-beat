@@ -1,14 +1,43 @@
+#EXTM3U
+
+#EXTINF:-1,SlayRadio
 http://relay4.slayradio.org:8200/
+
+#EXTINF:-1,Rainwave All
 http://allstream.rainwave.cc:8000/all.mp3
+
+#EXTINF:-1,Planet Rock
 http://tx.sharp-stream.com/icecast.php?i=planetrock.mp3
+
+#EXTINF:-1,Smooth Choice
 http://s1.viastreaming.net:8000
+
+#EXTINF:-1,Radio Caroline
 http://sc6.radiocaroline.net:8040/listen.pls
+
+#EXTINF:-1,Radio Caroline Flashback
 http://sc6.radiocaroline.net:10558/listen.pls
-http://www.listenlive.eu/bbcradio2.m3u
-http://www.listenlive.eu/bbcradio4.m3u
+
+#EXTINF:-1,BBC Radio 2
+http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/nonuk/sbr_low/llnw/bbc_radio_two.m3u8
+
+#EXTINF:-1,BBC Radio 4
+http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/nonuk/sbr_low/llnw/bbc_radio_fourfm.m3u8
+
+#EXTINF:-1,181 F M Top 40
 http://listen.181fm.com/181-uktop40_128k.mp3
+
+#EXTINF:-1,181 F M Country 
 http://listen.181fm.com/181-90scountry_128k.mp3
+
+#EXTINF:-1,181 F M Old School
 http://listen.181fm.com/181-oldschool_128k.mp3
+
+#EXTINF:-1,181 F M Nineties Dance
 http://listen.181fm.com/181-90sdance_128k.mp3
+
+#EXTINF:-1,181 F M Chilled
 http://listen.181fm.com/181-chilled_128k.mp3
+
+#EXTINF:-1,181 F M Classical
 http://listen.181fm.com/181-classical_128k.mp3

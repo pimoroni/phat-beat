@@ -15,7 +15,6 @@ Press Ctrl+C to exit!
 """)
 
 
-
 SPEED = 50
 BRIGHTNESS = 64
 SPREAD = 20

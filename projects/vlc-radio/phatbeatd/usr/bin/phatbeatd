@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import atexit
 import re
@@ -59,7 +59,7 @@ class VLC():
             self.socket.send(command_string)
 
         except socket.error:
-            log("Failed to send command to VLC", level=LOG_WARN) 
+            log("Failed to send command to VLC", level=LOG_WARN)
             if self.connect():
                 self.send(command)
 
@@ -149,7 +149,7 @@ if __name__ == "__main__":
             if pid > 0:
                 sys.exit(0)
 
-        except OSError, e:
+        except OSError as e:
             log("Fork #1 failed: {} ({})".format(e.errno, e.strerror))
             sys.exit(1)
 
@@ -162,7 +162,7 @@ if __name__ == "__main__":
             if pid > 0:
                 sys.exit(0)
 
-        except OSError, e:
+        except OSError as e:
             log("Fork #2 failed: {} ({})".format(e.errno, e.strerror))
             sys.exit(1)
 
@@ -173,9 +173,9 @@ if __name__ == "__main__":
 
     log("PHAT BEAT {} running with PID: {}".format("daemon" if daemonize else "process",pid))
 
-    stdin = file("/dev/null", 'r')
-    stdout = file(LOGFILE, 'a+')
-    stderr = file(ERRFILE, 'a+')
+    stdin = open("/dev/null", 'r')
+    stdout = open(LOGFILE, 'a+')
+    stderr = open(ERRFILE, 'a+')
 
     os.dup2(stdin.fileno(), sys.stdin.fileno())
     os.dup2(stdout.fileno(), sys.stdout.fileno())
